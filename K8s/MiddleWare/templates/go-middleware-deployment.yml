@@ -1,0 +1,28 @@
+---
+kind: Deployment
+
+spec:
+  
+  replicas: 1
+  template:
+    spec:
+      terminationGracePeriodSeconds: 15
+      containers:
+      - name: go-middle-ware-app
+        imagePullPolicy: Never
+        image: vikram/middleware
+       
+         
+        ports:
+        - containerPort: 9093
+    metadata:
+      labels:
+        app: go-middle-ware-app
+  selector:
+    matchLabels:
+      app: go-middle-ware-app
+apiVersion: apps/v1
+metadata:
+  labels:
+    app: go-middle-ware-app
+  name: go-middle-ware-app
